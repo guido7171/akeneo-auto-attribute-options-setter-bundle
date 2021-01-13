@@ -21,13 +21,6 @@
       "email": "benjamin.groleau@niji.fr"
     }
   ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/akeneo/pim-community-dev.git",
-      "branch": "master"
-    }
-  ],
   "require": {
     "php": "^7.0",
     "akeneo/pim-community-dev": "~5.0"
