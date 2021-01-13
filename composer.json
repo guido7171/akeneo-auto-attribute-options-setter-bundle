@@ -1,6 +1,6 @@
 
 {
-  "name": "guido7171/auto-attribute-options-setter-bundle",
+  "name": "niji/auto-attribute-options-setter-bundle",
   "type": "symfony-bundle",
   "description": "Symfony AutoAttributeOptionsSetterBundle",
   "keywords": [
