@@ -22,8 +22,7 @@
     }
   ],
   "require": {
-    "php": "^7.0",
-    "akeneo/pim-community-dev": "~5.0"
+    "php": "^7.0"
   },
   "config": {
     "sort-packages": true
