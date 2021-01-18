@@ -13,7 +13,8 @@ services:
             - '@pim_catalog.repository.attribute_option'
             - '@unrestricted_select_attribute_catalog.updater.setter.create_option_value'
         tags:
-            - { name: 'pim_catalog.updater.setter' }
+            - name: 'pim_catalog.updater.setter.before'
+              before: 'pim_catalog.updater.setter.multiselect_value'
 
     unrestricted_catalog.updater.setter.simpleselect_value:
         class: '%unrestricted_select_attribute_catalog.updater.setter.simpleselect_value.class%'
@@ -23,7 +24,8 @@ services:
             - '@pim_catalog.repository.attribute_option'
             - '@unrestricted_select_attribute_catalog.updater.setter.create_option_value'
         tags:
-            - { name: 'pim_catalog.updater.setter' }
+            - name: 'pim_catalog.updater.setter.before'
+              before: 'pim_catalog.updater.setter.simpleselect_value'
 
     unrestricted_select_attribute_catalog.updater.setter.create_option_value:
         class: '%unrestricted_select_attribute_catalog.updater.setter.create_option_value.class%'
