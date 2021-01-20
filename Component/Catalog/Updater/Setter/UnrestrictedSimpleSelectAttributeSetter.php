@@ -32,8 +32,7 @@ class UnrestrictedSimpleSelectAttributeSetter extends BaseSimpleSelectAttributeS
         $supportedTypes,
         AttributeOptionRepositoryInterface $identifiableObjectRepositoryInterface,
         UnrestrictedCreateOptionValue $unrestrictedCreateOptionValue
-    )
-    {
+    ) {
         $this->attrOptionRepository = $identifiableObjectRepositoryInterface;
         $this->unrestrictedCreateOptionValue = $unrestrictedCreateOptionValue;
         parent::__construct($entityWithValuesBuilder, $supportedTypes);
@@ -55,12 +54,17 @@ class UnrestrictedSimpleSelectAttributeSetter extends BaseSimpleSelectAttributeS
         if (null === $data) {
             $option = null;
         } else {
-            $data = preg_replace('/[^a-zA-Z0-9\']/', '_', $data);
+            /**
+             * solution works under one restriction
+             * option value codes may only be lowercase
+             * would be a nice validation resctriction option in akeneo use lowercase codes only
+             */
+            $data = preg_replace('/[^a-zA-Z0-9\']/', '_', mb_strtolower($data));
 
             $identifier = $attribute->getCode() . '.' . $data;
             $option = $this->attrOptionRepository->optionExists($identifier);
 
-            if(!$option){
+            if (!$option) {
                 $this->unrestrictedCreateOptionValue->createOptionValue($attribute->getCode(), $data);
             }
         }
