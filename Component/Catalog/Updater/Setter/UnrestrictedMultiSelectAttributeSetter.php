@@ -53,6 +53,7 @@ class UnrestrictedMultiSelectAttributeSetter extends BaseMultiSelectAttributeSet
             $option = null;
         } else {
             $data = preg_replace('/[^a-zA-Z0-9\']/', '_', $data);
+            $data = array_map('mb_strtolower',$data);
             $this->checkOption($attribute, $data);
         }
 
@@ -68,9 +69,9 @@ class UnrestrictedMultiSelectAttributeSetter extends BaseMultiSelectAttributeSet
         if (null === $datas) {
             return;
         }
-
         foreach ($datas as $data){
-            $identifier = $attribute->getCode() . '.' . $data;
+
+            $identifier = $attribute->getCode() . '.' . mb_strtolower($data);
             $optionExists = $this->attrOptionRepository->optionExists($identifier);
 
             if(!$optionExists){
